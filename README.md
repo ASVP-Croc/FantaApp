@@ -8,8 +8,8 @@ Alla base del progetto, vengono utilizzati vari framework e librerie di JavaScri
   - Tabs per la navigazione
 - Node.js e libreria Express.js:
   - mongoose per la comunicazione con MongoDB
-  - b-crypt/crypto-js per la cryptazione delle password nel DB
-  - JsonWebToken / expressJWT per la gestione dei Token di autenticazione
+  - b-crypt per la cryptazione delle password nel DB
+  - JsonWebToken per la gestione dei Token di autenticazione
   - express-validator per la validazione di input utente
   - helmet per la sicurezza contro attacchi XSS
   - dotEnv per la creazione di un environment
