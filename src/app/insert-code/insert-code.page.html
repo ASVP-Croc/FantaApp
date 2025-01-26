@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inserisci Codice Squadra</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Iscriviti a una Squadra</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Codice di Invito</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="inviteCode"
+          placeholder="Inserisci codice"
+        ></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" (click)="joinTeam()">Iscriviti</ion-button>
+
+      <ion-text color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-text>
+      <ion-text color="success" *ngIf="successMessage">{{ successMessage }}</ion-text>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

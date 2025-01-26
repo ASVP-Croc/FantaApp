@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Matchdays della Settimana</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="matchdays.length > 0; else noMatchdays">
+    <ion-item *ngFor="let item of matchdays" (click)="goToMatchdayDetail(item)">
+      <ion-label>
+        <h2>{{ item.teamName }}</h2>
+        <p>Giornata: {{ item.matchday.number }}</p>
+        <p>Data: {{ item.matchday.date | date: 'fullDate' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noMatchdays>
+    <p>Non ci sono matchdays per questa settimana.</p>
+  </ng-template>
+</ion-content>

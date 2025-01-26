@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dettagli Squadra</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="team">
+    <ion-card-header>
+      <ion-card-title>{{ team!.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Coach: {{ team!.coach }}</p>
+      <p>Codice di invito: <strong>{{ team!.inviteCode }}</strong></p>
+
+      <!-- Bottone per navigare alla pagina dei giocatori -->
+      <ion-button (click)="navigateToPlayers()">Giocatori</ion-button>
+
+      <!-- Bottone per navigare al calendario -->
+      <ion-button (click)="navigateToCalendars()">Calendario</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

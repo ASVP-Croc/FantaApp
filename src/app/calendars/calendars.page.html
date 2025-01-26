@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Calendari</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section>
+    <!-- Elenco Calendari -->
+    <h2>Elenco Calendari</h2>
+    <ion-list>
+      <ion-item *ngFor="let calendar of calendars" [routerLink]="['/teams', teamId, 'calendars', calendar._id]">
+        <ion-label>
+          <strong>Stagione:</strong> {{ calendar.season }}
+          <div>
+            <span>Matchdays: {{ calendar.matchdays.length || 0 }}</span>
+          </div>
+        </ion-label>
+        <ion-button slot="end" color="danger" (click)="deleteCalendar(calendar._id)">Elimina</ion-button>
+      </ion-item>
+    </ion-list>
+  </section>
+
+  <section>
+    <!-- Form per Creare Nuovo Calendario -->
+    <h2>Crea Nuovo Calendario</h2>
+    <ion-item>
+      <ion-label position="floating">Stagione</ion-label>
+      <ion-input
+        [(ngModel)]="newCalendar.season"
+        placeholder="Es. 2023/2024"
+        clearInput
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Numero di Matchdays</ion-label>
+      <ion-input
+        [(ngModel)]="newCalendar.numMatchdays"
+        type="number"
+        min="1"
+        clearInput
+      ></ion-input>
+    </ion-item>
+    <ion-button (click)="createCalendar()" expand="full" color="primary">
+      Crea Calendario
+    </ion-button>
+  </section>
+</ion-content>

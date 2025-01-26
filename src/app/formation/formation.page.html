@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Gestione Formazione</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="formation; else createFormationTemplate">
+    <p><strong>Modulo:</strong> {{ formation.module }}</p>
+    <ul>
+      <li *ngFor="let player of selectedPlayers; index as i">
+        {{ i + 1 }}. {{ player.lastName }} {{ player.firstName }}
+      </li>
+    </ul>
+    <ion-button (click)="deleteFormation()" color="danger">Elimina Formazione</ion-button>
+  </div>
+
+  <ng-template #createFormationTemplate>
+    <h2>Crea una Nuova Formazione</h2>
+    <ion-item>
+      <ion-label position="stacked">Modulo</ion-label>
+      <ion-input [(ngModel)]="module" placeholder="Inserisci modulo"></ion-input>
+    </ion-item>
+
+    <h3>Seleziona 11 Giocatori</h3>
+    <ul>
+      <li *ngFor="let player of players">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span>
+            {{ player.lastName }} {{ player.firstName }}
+          </span>
+          <ion-button 
+            [color]="isSelected(player) ? 'danger' : 'primary'" 
+            (click)="togglePlayer(player)">
+            {{ isSelected(player) ? 'Rimuovi' : 'Seleziona' }}
+          </ion-button>
+        </div>
+      </li>
+    </ul>
+
+    <ion-button
+      *ngIf="isFormValid()"
+      (click)="createFormation()"
+      color="primary"
+      expand="full"
+    >
+      Crea Formazione
+    </ion-button>
+  </ng-template>
+</ion-content>

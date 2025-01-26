@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Matchday Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section>
+    <!-- Dettagli del Matchday -->
+    <h2>Dettagli Matchday</h2>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          <p><strong>Numero:</strong> {{ matchday?.number }}</p>
+          <p><strong>Data:</strong> {{ matchday?.date | date: 'longDate' }}</p>
+        </ion-label>
+        <!-- Bottone per navigare alla Formazione -->
+        <ion-button
+        slot="end"
+        color="secondary"
+        [routerLink]="['/teams', teamId, 'calendars', calendarId, 'matchdays', matchdayId, 'formation']"
+      >
+        Formazione
+      </ion-button>
+      </ion-item>
+    </ion-list>
+  </section>
+
+  <!-- Bottone per aggiornare il Matchday -->
+  <section>
+    <ion-button expand="block" (click)="toggleDatePicker()">
+      {{ showDatePicker ? 'Annulla Aggiornamento' : 'Aggiorna Matchday' }}
+    </ion-button>
+
+    <!-- Calendario per selezionare la nuova data -->
+    <div *ngIf="showDatePicker">
+      <ion-item>
+        <ion-label position="stacked">Seleziona Nuova Data</ion-label>
+        <ion-datetime
+          [value]="updatedDate"
+          (ionChange)="onDateChange($event)"
+          presentation="date"
+        ></ion-datetime>
+      </ion-item>
+      <ion-button expand="block" (click)="updateMatchday()">Salva</ion-button>
+    </div>
+  </section>
+</ion-content>

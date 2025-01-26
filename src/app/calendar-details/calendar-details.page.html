@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dettagli Calendario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="calendar">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Calendario: {{ calendar.season }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Numero di giornate:</strong> {{ calendar.matchdays.length }}</p>
+
+      <ion-button (click)="navigateToMatchdays()">Vedi Matchdays</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

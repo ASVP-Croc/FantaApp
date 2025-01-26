@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Gestione Giocatori</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="players.length > 0; else noPlayers">
+    <h2>Giocatori</h2>
+    <ion-list>
+      <ng-container *ngFor="let player of players">
+        <ion-item>
+          <ion-label>
+            <strong>{{ player.firstName }} {{ player.lastName }}</strong>
+            <div>
+              <span>Gol: {{ player.goals }} </span> | 
+              <span>Assist: {{ player.assists }}</span>
+            </div>
+          </ion-label>
+          <ion-button color="primary" (click)="toggleUpdateForm(player)">
+            {{ selectedPlayer?._id === player._id ? 'Chiudi' : 'Modifica' }}
+          </ion-button>
+          <ion-button color="danger" (click)="deletePlayer(player._id)">Elimina</ion-button>
+        </ion-item>
+
+        <!-- Mostra il form di modifica sotto al giocatore selezionato -->
+        <div *ngIf="selectedPlayer?._id === player._id" class="update-form">
+          <ion-item>
+            <ion-label position="floating">Gol</ion-label>
+            <ion-input
+              [(ngModel)]="selectedPlayer!.goals"
+              name="goals"
+              type="number"
+              min="0"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Assist</ion-label>
+            <ion-input
+              [(ngModel)]="selectedPlayer!.assists"
+              name="assists"
+              type="number"
+              min="0"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-button (click)="updatePlayer()" expand="full">Aggiorna Giocatore</ion-button>
+        </div>
+      </ng-container>
+    </ion-list>
+  </div>
+
+  <div>
+    <h2>Aggiungi Giocatore</h2>
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input [(ngModel)]="newPlayer.firstName" name="firstName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Cognome</ion-label>
+      <ion-input [(ngModel)]="newPlayer.lastName" name="lastName"></ion-input>
+    </ion-item>
+    <ion-button (click)="createPlayer()" expand="full">Aggiungi Giocatore</ion-button>
+  </div>
+
+  <ng-template #noPlayers>
+    <ion-text>No players available.</ion-text>
+  </ng-template>
+</ion-content>
+
+

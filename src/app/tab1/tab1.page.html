@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>FantaApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="isAuthenticated; else unauthenticated">
+    <ion-card-header>
+      <ion-card-title>Benvenuto</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ welcomeMessage }}</p>
+       <!-- Bottoni per creare una squadra e inserire un codice -->
+    <ion-button expand="block" (click)="navigateToCreateTeam()">Visualizza Squadre</ion-button>
+    <ion-button expand="block" color="secondary" (click)="navigateToJoinTeam()">Inserisci codice</ion-button>
+    
+      <ion-button expand="block" color="danger" (click)="logout()">
+        Logout
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ng-template #unauthenticated>
+    <ion-button expand="block" (click)="toggleLoginForm()">Accedi</ion-button>
+    <ion-button expand="block" color="secondary" (click)="toggleRegisterForm()">
+      Registrati
+    </ion-button>
+
+    <!-- Login Form -->
+    <ion-card *ngIf="showLoginForm">
+      <ion-card-header>
+        <ion-card-title>Accedi</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input
+              type="email"
+              [(ngModel)]="formData.email"
+              name="email"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input
+              type="password"
+              [(ngModel)]="formData.password"
+              name="password"
+            ></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-button expand="block" (click)="login()">Login</ion-button>
+        <ion-text color="danger" *ngIf="errorMessage">
+          <p>{{ errorMessage }}</p>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Register Form -->
+    <ion-card *ngIf="showRegisterForm">
+      <ion-card-header>
+        <ion-card-title>Registrati</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Nome</ion-label>
+            <ion-input
+              type="text"
+              [(ngModel)]="formData.firstName"
+              name="firstName"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Cognome</ion-label>
+            <ion-input
+              type="text"
+              [(ngModel)]="formData.lastName"
+              name="lastName"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input
+              type="email"
+              [(ngModel)]="formData.email"
+              name="email"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Username</ion-label>
+            <ion-input
+              type="text"
+              [(ngModel)]="formData.username"
+              name="username"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input
+              type="password"
+              [(ngModel)]="formData.password"
+              name="password"
+            ></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-button expand="block" (click)="register()">Registrati</ion-button>
+        <ion-text color="danger" *ngIf="errorMessage">
+          <p>{{ errorMessage }}</p>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-content>

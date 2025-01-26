@@ -1,0 +1,7 @@
+{
+  "name": "PPXS",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

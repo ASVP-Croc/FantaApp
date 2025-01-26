@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Le Tue Squadre</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Lista delle squadre -->
+  <ion-list>
+    <ion-item
+      *ngFor="let team of teams"
+      (click)="viewLeaderboard(team)"
+      detail
+    >
+      {{ team.name }}
+    </ion-item>
+  </ion-list>
+
+  <!-- Card della classifica -->
+  <ion-card *ngIf="leaderboard">
+    <ion-card-header>
+      <ion-card-title>Classifica {{ selectedTeam?.name }}</ion-card-title>
+    </ion-card-header>
+
+    <!-- Linea di separazione -->
+    <div style="border-top: 1px solid var(--ion-color-medium); margin: 10px 0;"></div>
+
+    <ion-card-content>
+      <ion-list>
+        <!-- Itera sulla classifica -->
+        <ion-item *ngFor="let user of leaderboard; let i = index" lines="full">
+          <!-- Numero posizione -->
+          <ion-label>
+            <h3>{{ i + 1 }}. {{ user.username }}</h3>
+          </ion-label>
+
+          <!-- Punti totalizzati -->
+          <ion-note slot="end">
+            <strong>{{ user.totalPoints }}</strong> punti
+          </ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

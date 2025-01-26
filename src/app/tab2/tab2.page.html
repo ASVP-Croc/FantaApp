@@ -1,0 +1,98 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Le tue squadre</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Lista delle squadre create dall'utente -->
+  <ion-card *ngIf="userTeams.length">
+    <ion-card-header>
+      <ion-card-title>Squadre create</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item *ngFor="let team of userTeams" (click)="navigateToTeamDetails(team._id)">
+        <ion-label>
+          <h2>{{ team.name }}</h2>
+          <p>Coach: {{ team.coach }}</p>
+        </ion-label>
+        <!-- Pulsante Modifica con stopPropagation -->
+        <ion-button 
+          color="primary" 
+          (click)="editTeam(team); $event.stopPropagation()"
+        >
+          Modifica
+        </ion-button>
+        <!-- Pulsante Elimina con stopPropagation -->
+        <ion-button 
+          color="danger" 
+          (click)="deleteTeam(team._id); $event.stopPropagation()"
+        >
+          Elimina
+        </ion-button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Form di modifica -->
+  <ion-card *ngIf="editingTeam">
+    <ion-card-header>
+      <ion-card-title>Modifica Squadra</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input [(ngModel)]="editingTeam.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Coach</ion-label>
+        <ion-input [(ngModel)]="editingTeam.coach"></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="updateTeam()">Salva</ion-button>
+      <ion-button expand="block" color="light" (click)="cancelEdit()">Annulla</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista delle squadre a cui l'utente è iscritto -->
+  <ion-card *ngIf="joinedTeams.length">
+    <ion-card-header>
+      <ion-card-title>Squadre a cui sei iscritto</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item *ngFor="let team of joinedTeams" (click)="navigateToTeamDetails(team._id)">
+        <ion-label>
+          <h2>{{ team.name }}</h2>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Bottone per mostrare il form di creazione -->
+  <ion-button
+    expand="block"
+    color="primary"
+    (click)="showCreationForm = !showCreationForm"
+    *ngIf="!showCreationForm"
+  >
+    Crea nuova squadra
+  </ion-button>
+
+  <!-- Form di creazione di una nuova squadra -->
+  <ion-card *ngIf="showCreationForm">
+    <ion-card-header>
+      <ion-card-title>Crea una nuova squadra</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input [(ngModel)]="newTeam.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Coach</ion-label>
+        <ion-input [(ngModel)]="newTeam.coach"></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="createNewTeam()">Crea</ion-button>
+      <ion-button expand="block" color="light" (click)="showCreationForm = false">Annulla</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

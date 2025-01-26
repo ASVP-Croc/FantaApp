@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Matchdays</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="matchdays.length > 0">
+    <ion-item *ngFor="let matchday of matchdays" (click)="viewMatchdayDetails(matchday._id)">
+      <ion-label>
+        <h2>Matchday {{ matchday.number }}</h2>
+        <p>Data: {{ matchday.date | date: 'longDate' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <p *ngIf="matchdays.length === 0">Nessun matchday disponibile.</p>
+</ion-content>

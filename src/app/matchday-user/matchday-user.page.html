@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Dettagli Matchday - {{teamName || 'Caricamento...' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="matchdayDetails; else loading">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Matchday {{ matchdayDetails.number }}</ion-card-title>
+      <ion-card-subtitle>Data: {{ matchdayDetails.date | date: 'fullDate' }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <h3>Formazione Ufficiale</h3>
+      <div *ngIf="matchdayDetails.officialFormation; else noOfficialFormation">
+        <p>ID Formazione: {{ matchdayDetails.officialFormation._id }}</p>
+      </div>
+      <ng-template #noOfficialFormation>
+        <p>Nessuna formazione ufficiale disponibile.</p>
+      </ng-template>
+
+      <h3>Formazioni Utente</h3>
+      <ion-list *ngIf="matchdayDetails.formations.length > 0; else noFormations">
+        <ion-item *ngFor="let formation of matchdayDetails.formations">
+          <ion-label>ID Formazione: {{ formation._id }}</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ng-template #noFormations>
+        <p>Nessuna formazione inviata.</p>
+      </ng-template>
+
+      <!-- Pulsante Crea Formazione -->
+      <ion-button
+        color="primary"
+        expand="block"
+        (click)="navigateToFormationCreation()"
+      >
+        Crea Formazione
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
+<ng-template #loading>
+  <ion-spinner name="crescent"></ion-spinner>
+  <p>Caricamento in corso...</p>
+</ng-template>
