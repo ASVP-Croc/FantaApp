@@ -3,9 +3,9 @@
 Alla base del progetto, vengono utilizzati vari framework e librerie di JavaScript:
 
 - Framework Ionic per la parte frontend con utilizzo di:
-  -Framework Angular
-  -Componenti standalone
-  -Tabs per la navigazione
+  - Framework Angular
+  - Componenti standalone
+  - Tabs per la navigazione
 - Node.js e libreria Express.js:
   - mongoose per la comunicazione con MongoDB
   - b-crypt/crypto-js per la cryptazione delle password nel DB
@@ -39,7 +39,7 @@ Alla base del progetto, vengono utilizzati vari framework e librerie di JavaScri
   trasmesso nelle richieste HTTP ed inserito nel relativo header, grazie al quale il server sarà in grado di riconoscere l'utente ad ogni 
   richiesta inviata.
 
--Per garantire maggiore sicurezza è stato configurato un proxy che si occupa di gestire le richieste tra frontend e backend per evitare problemi dovuti all'utilizzo di CORS.
+- Per garantire maggiore sicurezza è stato configurato un proxy che si occupa di gestire le richieste tra frontend e backend per evitare problemi dovuti all'utilizzo di CORS.
 
 - Grazie all'uso di bcrypt, le password vengono salvate nel DB in maniera cryptata
 
