@@ -20,7 +20,7 @@ Alla base del progetto, vengono utilizzati vari framework e librerie di JavaScri
 - L'applicazione si basa su creazione, autenticazione e autorizzazione dell'utente che potrà svolgere varie attività:
 
   - l'utente(admin) avrà la possibilità di creare una o più squadre e diventare l'admin per le squadre create andando a gestire i giocatori, il calendario, le giornate e la relativa formazione ufficiale dalla creazione alla modifica e eliminazione.
-  -
+    
   - l'utente(iscritto) avrà la possibilità di iscriversi tramite un codice di invito a una o più squadre e visualizzre i dettagli di ogni squadra come i giocatori, i calendari, le giornate e le formazioni ufficiali. Oltre a questo avrà la capacità di creare una propria formazione per le le squadre a cui si è iscirtto che scendono in campo durante la settimana andando a competere con gli altri utenti iscritti per la vittoria del campionato visibile giornata dopo giornata tramite la classifica.
 
     - Il calcolo dei punti è assegnato nel seguente modo:
