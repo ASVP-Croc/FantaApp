@@ -1,4 +1,4 @@
-<h1> FANTAAPP - PWA </h1>
+<h1> FANTAAPP - Applicazione Ibrida </h1>
 
 Alla base del progetto, vengono utilizzati vari framework e librerie di JavaScript:
 
@@ -31,7 +31,7 @@ Alla base del progetto, vengono utilizzati vari framework e librerie di JavaScri
 
 <h2>Installabilità</h2>
 
-- L'applicazione ha la possibilità di essere installata su di un dispositivo mobile come android o IOS. Ovviamente, non essendo attualmente in un ambiente diverso dal localhost, tale servizio è installabile solamente sul dispositivo su cui viene avviato il server http.
+- L'applicazione ha la possibilità di essere installata su di un dispositivo mobile come android o IOS . Ovviamente, non essendo attualmente in un ambiente diverso dal localhost, tale servizio è installabile solamente sul dispositivo su cui viene avviato il server http.
 
 <h2>Sicurezza</h2>
 
